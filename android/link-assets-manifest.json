@@ -1,0 +1,213 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/DancingScript-Bold.ttf",
+      "sha1": "40e545d9cdad467a919c2a38c032bc4fdb69c01f"
+    },
+    {
+      "path": "assets/fonts/DancingScript-Regular.ttf",
+      "sha1": "77b7bf804974618d28d7b73c79ea5d34c82cb704"
+    },
+    {
+      "path": "assets/fonts/Poppins-Bold.ttf",
+      "sha1": "875cf0cecd647bcf22e79d633d868c1b1ec98dfa"
+    },
+    {
+      "path": "assets/fonts/Poppins-Italic.ttf",
+      "sha1": "e2bfcd56016c3c915221ef1c5fc1a17b0776eb91"
+    },
+    {
+      "path": "assets/fonts/Poppins-Medium.ttf",
+      "sha1": "283f21b44efbdbf276ba802be2d949a36bbc4233"
+    },
+    {
+      "path": "assets/fonts/Poppins-Regular.ttf",
+      "sha1": "fdd3002e7d814ee47c1c1b8487c72c6bbb3a2d00"
+    },
+    {
+      "path": "assets/fonts/Poppins-SemiBold.ttf",
+      "sha1": "8a4ace9392d06bcb7f8ea2f5169b07e4c383a90d"
+    },
+    {
+      "path": "assets/images/AllStar.png",
+      "sha1": "aaff2191dddbc25362e7b6ab52dc3285ed38c2bc"
+    },
+    {
+      "path": "assets/images/background.png",
+      "sha1": "6566be2ea31e089f153f46b3e32994db521e7b69"
+    },
+    {
+      "path": "assets/images/BohemianRapsody.png",
+      "sha1": "31a4828b5909e7441411e033471bb669896ebaf2"
+    },
+    {
+      "path": "assets/images/DancingQueen.png",
+      "sha1": "9fcc31b671a7b2861d7abc5320cd9e3310c25357"
+    },
+    {
+      "path": "assets/images/ElectricFeel.png",
+      "sha1": "727dc3443e40a50aeee473da8c55ffde67f257bf"
+    },
+    {
+      "path": "assets/images/GetLucky.png",
+      "sha1": "4310e5b91bd540a2d94b9842657979fce138e235"
+    },
+    {
+      "path": "assets/images/Highway.png",
+      "sha1": "4ac7bd3fbe7ae9c570b354aa1cccacbe33826029"
+    },
+    {
+      "path": "assets/images/Highway@2x.png",
+      "sha1": "1f3ef6a17e2faafe5fa04e3657fa14af0db37dee"
+    },
+    {
+      "path": "assets/images/IDonCare.png",
+      "sha1": "31b249133b78696c5d5f4ff3a878f15f7b4c00f6"
+    },
+    {
+      "path": "assets/images/Illustrution.png",
+      "sha1": "fb7fd0e67b4f3abc40850ec673cff1ad1f267b38"
+    },
+    {
+      "path": "assets/images/ImageAu.png",
+      "sha1": "98a81e2c02060a6746cb65bbeac81602e91fa033"
+    },
+    {
+      "path": "assets/images/ImageAu@2x.png",
+      "sha1": "67dcb30fef733084a9a5762da8794ddaed2330fd"
+    },
+    {
+      "path": "assets/images/ImageAu@3x.png",
+      "sha1": "7c88df41c5a53cb517dce65af347f20aef2c45f4"
+    },
+    {
+      "path": "assets/images/Imageclasshit.png",
+      "sha1": "9523445a76e95d7606c7e92b16626d39eb42e686"
+    },
+    {
+      "path": "assets/images/Imageclasshit@2x.png",
+      "sha1": "4623516ad64d376bdcc9b7fa75fc88b9ad036986"
+    },
+    {
+      "path": "assets/images/Imageclasshit@3x.png",
+      "sha1": "061409c17bc83e3aa2ee430633a1d3be3aa4f45c"
+    },
+    {
+      "path": "assets/images/ImageHitTitle.png",
+      "sha1": "3f9bf45a2a6771407d5a6cc5d55ffd66eb99c247"
+    },
+    {
+      "path": "assets/images/ImageHitTitle@2x.png",
+      "sha1": "411f4cc2b5747fe8f9a4d7ce8040663820932806"
+    },
+    {
+      "path": "assets/images/ImageHitTitle@3x.png",
+      "sha1": "049de92e9702c4d2d397b61337047ed36bcf685a"
+    },
+    {
+      "path": "assets/images/ImageParty.png",
+      "sha1": "d343063623ddf692f1b60438420e508b641ad0d6"
+    },
+    {
+      "path": "assets/images/ImageParty@2x.png",
+      "sha1": "d58af55cba9c0765095f60b7cc8ed5cdbf68bb41"
+    },
+    {
+      "path": "assets/images/ImageParty@3x.png",
+      "sha1": "a25e9e2281d50299f9d2c137f86a5270d3b0cd20"
+    },
+    {
+      "path": "assets/images/ImageSongTitle.png",
+      "sha1": "01df5d236e14d3ded48e5d5507ca309c5d958ad5"
+    },
+    {
+      "path": "assets/images/ImageSongTitle@2x.png",
+      "sha1": "a54a0b5aacf507ce4597aa282774e3c38bffa9ce"
+    },
+    {
+      "path": "assets/images/ImageSongTitle@3x.png",
+      "sha1": "fccda454adf5255f65b0bae5ed2ed05069451e17"
+    },
+    {
+      "path": "assets/images/ImageTop1.png",
+      "sha1": "84d67c2b644b3d4171b87a9f6402db65a9a09863"
+    },
+    {
+      "path": "assets/images/ImageTop1@2x.png",
+      "sha1": "b2a21182946e69539995b88c0553553296742280"
+    },
+    {
+      "path": "assets/images/ImageTop1@3x.png",
+      "sha1": "2f39e5d86dc6b8ef3f82dbdeec54e0df1a4ebbec"
+    },
+    {
+      "path": "assets/images/ImageTop2.png",
+      "sha1": "8897da7761b541296d9a1b64f9873034fa55d4f6"
+    },
+    {
+      "path": "assets/images/ImageTop2@2x.png",
+      "sha1": "5fc524be016700cc375e4dce07dd4bd1992e8cee"
+    },
+    {
+      "path": "assets/images/ImageTop2@3x.png",
+      "sha1": "1849e387491898eaae3978f9c1ffbd77a5838a92"
+    },
+    {
+      "path": "assets/images/IWillAlwaysLoveYou.png",
+      "sha1": "241e7ad4217180b54604fb6f4cca5a68cdfd1e73"
+    },
+    {
+      "path": "assets/images/LoveLikeThat.png",
+      "sha1": "18d67892574f58ca5cda4cfdb2860ea3d321ea7e"
+    },
+    {
+      "path": "assets/images/Microphone.png",
+      "sha1": "fc69af06661d945aeb4947895df8f1006f3685b5"
+    },
+    {
+      "path": "assets/images/Microphone@2x.png",
+      "sha1": "622627ff4c25b3ed5129e7f07d52d37e6ed517a4"
+    },
+    {
+      "path": "assets/images/Microphone@3x.png",
+      "sha1": "cad0d2312bdb3ee6919b6c44c1bb3984714e4152"
+    },
+    {
+      "path": "assets/images/MusicProgrress.png",
+      "sha1": "a397216c87ea20d0184a0d5cdf106b07069e0d48"
+    },
+    {
+      "path": "assets/images/PumPedUpKicks.png",
+      "sha1": "3c4ab7e508243eab10145c731e99653f09b03c1d"
+    },
+    {
+      "path": "assets/images/PutYouRecordsOn.png",
+      "sha1": "490b403b3b30be87b79bd618b6e54e26f28d252d"
+    },
+    {
+      "path": "assets/images/September.png",
+      "sha1": "aec3d0f1dd015f6176d3eb119a60600bf984379a"
+    },
+    {
+      "path": "assets/images/Slider.png",
+      "sha1": "4d505307effc95f56e190498b78d9dd809a7b826"
+    },
+    {
+      "path": "assets/images/TheBandBeamNotes.png",
+      "sha1": "5a33a0838cb88df26e763636e921a568653e75b0"
+    },
+    {
+      "path": "assets/images/TheBandBeamNotes2@2x.png",
+      "sha1": "e46bf8add8a2af028e3d903240c4fa9d5966f174"
+    },
+    {
+      "path": "assets/images/TheBandBeamNotes2@3x.png",
+      "sha1": "1aa310f2b99979a769d8ad4b201e3d6cf834b6d6"
+    },
+    {
+      "path": "assets/images/Willow.png",
+      "sha1": "8e61778ee088fa5dcd138364a16c1df89ec2c025"
+    }
+  ]
+}
