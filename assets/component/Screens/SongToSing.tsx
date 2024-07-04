@@ -6,7 +6,7 @@ import Download from "../../IconSvgs/Download.svg";
 import { useNavigation } from '@react-navigation/native';
 import * as React from "react";
 import {styles} from "../styles/StyleSongtoSing.tsx";
-
+import ScaleTim from "./ScaleTim.tsx";
 const SongToSing = () => {
     const navigation = useNavigation();
     const renderBackgroundImage = (source, heights, widths, borderTopRadius, borderBottomRadius) => {
@@ -103,12 +103,15 @@ const SongToSing = () => {
                 <View style={styles.HeadingTaskBar}>
 
                 <View style={styles.HeadingButtonBack}>
-                <TouchableOpacity style={styles.HeadingButtonBack} onPress={() => navigation.goBack()}>
+                <TouchableOpacity
+                  style={styles.HeadingButtonBack}
+                  onPress={() => navigation.goBack()}
+                  hitSlop={{ top: 6, bottom: 16, left: 16, right: 16 }}>
                 <Back />
                 </TouchableOpacity>
                 </View>
                 <View style={styles.HeadingAction}>
-                    <Heart_Like/>
+                    <ScaleTim />
                     <Download/>
                 </View>
 
