@@ -6,6 +6,7 @@ import SongToSing from './assets/component/Screens/SongToSing';
 import PartySong from './assets/component/Screens/PartySong';
 import ChillHits from './assets/component/Screens/ChillHits';
 import SongViewScreen from './assets/component/Screens/SongViewScreen';
+import TestScreen from './assets/component/Screens/ScaleTim.tsx';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
