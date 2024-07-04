@@ -3,9 +3,11 @@ import { ratioH, ratioW } from "../utils/RatioScale";
 import Back from "../../IconSvgs/Back.svg";
 import Heart_Like from "../../IconSvgs/Heart_Like.svg";
 import Download from "../../IconSvgs/Download.svg";
+import { useNavigation } from '@react-navigation/native';
 
 
 const ChillHits = () => {
+    const navigation = useNavigation();
 
     const renderBackgroundImage = (source, heights, widths, borderTopRadius, borderBottomRadius) => {
       return (
@@ -18,12 +20,12 @@ const ChillHits = () => {
             borderTopRightRadius: borderTopRadius,
             borderBottomLeftRadius: borderBottomRadius,
             borderBottomRightRadius: borderBottomRadius,
-            
+
           }}
         />
       );
     };
-   
+
     const BackgroundHeadingImage = () => {
       return renderBackgroundImage(require("../../images/ImageHitTitle.png"), 261, 375, 0 ,0);
     };
@@ -45,36 +47,36 @@ const ChillHits = () => {
             <View style={styles.containerHeading}>
                 <View style={styles.HeadingTaskBar}>
 
-                <View style={styles.HeadingButtonBack}>
-                    <Back/>
-                </View>
+                    <TouchableOpacity style={styles.HeadingButtonBack} onPress={() => navigation.goBack()}>
+                        <Back />
+                    </TouchableOpacity>
                 <View style={styles.HeadingAction}>
                     <Heart_Like/>
                     <Download/>
                 </View>
-       
-                    
+
+
                 </View>
                 <View style={styles.headingImage}>
                     {BackgroundHeadingImage()}
                 </View>
                 <View style={styles.headingTitle}>
-                    <Text 
+                    <Text
                         style={styles.TextTitle}
                     >Chill Hits</Text>
-                    <Text 
+                    <Text
                         style={styles.TextTitleDescription}
                     >30 songs to sing in the shower</Text>
                 </View>
             </View>
             <ScrollView
                 vertical
-                showsVerticalScrollIndicator={false} 
-                style={styles.scrollViewContainer} 
-                contentContainerStyle={styles.contentContainerSing} 
+                showsVerticalScrollIndicator={false}
+                style={styles.scrollViewContainer}
+                contentContainerStyle={styles.contentContainerSing}
             >
                 <View style={styles.ContainerSong}>
-                    
+
                         <View style={styles.songItem}>
 
                             {WillowImage()}
@@ -83,7 +85,7 @@ const ChillHits = () => {
                             <Text style={styles.songTitle}>Willow</Text>
                             <Text style={styles.songTitleDecription}>Taylor Swift</Text>
                             </View>
-                           
+
 
                         </View>
                         <View style={styles.songItem}>
@@ -107,7 +109,7 @@ const ChillHits = () => {
                             <Text style={styles.songTitleDecription}>Lauv</Text>
                             </View>
                         </View>
-                
+
                 </View>
             </ScrollView>
         </View>
@@ -119,7 +121,7 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection: 'column',
         backgroundColor:'#ffffff'
-        
+
     },
     containerHeading: {
         flexDirection: 'column',
@@ -128,13 +130,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#bba5ff',
         borderBottomRightRadius:ratioW(40),
         borderBottomLeftRadius:ratioW(40)
-        
+
     },
     HeadingTaskBar: {
         flexDirection:'row',
         paddingBottom: ratioW(32),
         height: ratioW(32),
-        
+
     },
     HeadingButtonBack:{
         paddingLeft:ratioW(18)
@@ -155,38 +157,38 @@ const styles = StyleSheet.create({
         height: ratioH(52),
         flexDirection:'column',
         paddingHorizontal:ratioW(38),
-        
+
     },
-  
+
     TextTitle:{
         height:ratioW(34),
         fontSize:ratioW(24),
         fontFamily:'Poppins-SemiBold',
-        color:'#191D21',   
-    },  
+        color:'#191D21',
+    },
     TextSongContainer:{
-        
+
          paddingBottom:ratioW(12),
     },
     TextTitleDescription:{
         fontSize:ratioW(14),
         fontFamily:'Poppins-Medium',
         color:'#656F77',
-        
+
     },
     ContainerSong: {
         flex: 1,
         flexDirection: 'column',
         top: ratioW(42),
-  
+
     },
     scrollViewContainer: {
         flex:1
-       
+
     },
     contentContainerSing:{
          paddingBottom:36,
-         
+
     },
     songItem: {
 
@@ -194,14 +196,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingHorizontal:ratioW(28),
         alignItems:'center'
-        
+
     },
     songTitle: {
-        
+
         fontFamily:'Poppins-SemiBold',
         fontSize:ratioW(16),
         color:'#191D21'
-       
+
     },
     songTitleDecription:{
         fontFamily:'Poppins-Regular',

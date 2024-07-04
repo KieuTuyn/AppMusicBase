@@ -1,11 +1,14 @@
-import { Image, StyleSheet, Text, View, TextInput, ScrollView, Button,TouchableOpacity } from "react-native";
+import { Image, StyleSheet, Text, View, TextInput, ScrollView, Button, TouchableOpacity, FlatList } from "react-native";
 import { ratioH, ratioW } from "../utils/RatioScale";
 import Back from "../../IconSvgs/Back.svg";
 import Heart_Like from "../../IconSvgs/Heart_Like.svg";
 import Download from "../../IconSvgs/Download.svg";
+import { useNavigation } from '@react-navigation/native';
+import * as React from "react";
 
 
 const PartySong = () => {
+    const navigation = useNavigation();
 
     const renderBackgroundImage = (source, heights, widths, borderTopRadius, borderBottomRadius) => {
       return (
@@ -18,12 +21,12 @@ const PartySong = () => {
             borderTopRightRadius: borderTopRadius,
             borderBottomLeftRadius: borderBottomRadius,
             borderBottomRightRadius: borderBottomRadius,
-            
+
           }}
         />
       );
     };
-   
+
     const BackgroundHeadingImage = () => {
       return renderBackgroundImage(require("../../images/ImageParty.png"), 261, 375, 0 ,0);
     };
@@ -40,76 +43,101 @@ const PartySong = () => {
         return renderBackgroundImage(require("../../images/GetLucky.png"), 96, 96, 0, 0);
     };
 
+    const dataViewListMusic = [
+        {
+            title: 'Bohemian Rhapsody',
+            author: 'MGMT',
+            renderBackground: () => ElectricFeelImage(),
+            screen:'SongToSing'
+        },
+        {
+            title: 'Pumped up kicks',
+            author: 'Foster the people',
+            renderBackground: () => PumPedUpKicksImage(),
+            screen:'SongToSing'
+        },
+        {
+            title: 'September',
+            author: 'Earth wind & fire',
+            renderBackground: () => SeptemberImage(),
+            screen:'SongToSing'
+        },
+        {
+            title: 'Get Lucky',
+            author: 'Earth wind & fir',
+            renderBackground: () => GetLuckyImage(),
+            screen:'SongToSing'
+        },
+        {
+            title: 'Music 2',
+            author: 'Queen',
+            renderBackground: () => GetLuckyImage(),
+            screen:'SongToSing'
+        },
+        {
+            title: 'Music 3',
+            author: 'Queen',
+            renderBackground: () => SeptemberImage(),
+            screen:'SongToSing'
+        },
+
+    ];
+    const renderItem = ({ item }) => (
+      <TouchableOpacity
+        onPress={() => navigation.navigate(item.screen)} >
+
+          <View style={styles.songItem}>
+              {item.renderBackground()}
+              <View style={styles.TextSongContainer} >
+                  <Text style={styles.songTitle}>{item.title}</Text>
+                  <Text style={styles.songTitleDecription}>{item.author}</Text>
+              </View>
+
+          </View>
+
+      </TouchableOpacity>
+    )
     return (
         <View style={styles.container}>
             <View style={styles.containerHeading}>
                 <View style={styles.HeadingTaskBar}>
 
                 <View style={styles.HeadingButtonBack}>
-                    <Back/>
+                    <TouchableOpacity style={styles.HeadingButtonBack} onPress={() => navigation.goBack()}>
+                        <Back />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.HeadingAction}>
                     <Heart_Like/>
                     <Download/>
                 </View>
-       
-                    
+
+
                 </View>
                 <View style={styles.headingImage}>
                     {BackgroundHeadingImage()}
                 </View>
                 <View style={styles.headingTitle}>
-                    <Text 
+                    <Text
                         style={styles.TextTitle}
                     >Party songs</Text>
-                    <Text 
+                    <Text
                         style={styles.TextTitleDescription}
                     >30 songs to sing in the shower</Text>
                 </View>
             </View>
-            <ScrollView
-                vertical
-                showsVerticalScrollIndicator={false} 
-                style={styles.scrollViewContainer} 
-                contentContainerStyle={styles.contentContainerSing} 
-            >
-                <View style={styles.ContainerSong}>
-                    
-                        <View style={styles.songItem}>
 
-                            {ElectricFeelImage()}
+            <View style={styles.ContainerSong}>
+                <FlatList
+                  data={dataViewListMusic}
+                  renderItem={renderItem}
+                  keyExtractor={(item) => item.title}
+                  vertical={true}
+                  showsVerticalScrollIndicator={false}
+                  contentContainerStyle={styles.flatListContentContainer} // Add spacing if needed
+                />
+            </View>
 
-                            <View style={styles.TextSongContainer} >
-                            <Text style={styles.songTitle}>Bohemian Rhapssody</Text>
-                            <Text style={styles.songTitleDecription}>MGMT</Text>
-                            </View>
-                           
-
-                        </View>
-                        <View style={styles.songItem}>
-                            {PumPedUpKicksImage()}
-                            <View style={styles.TextSongContainer} >
-                            <Text style={styles.songTitle}>Pumped up kicks</Text>
-                            <Text style={styles.songTitleDecription}>Foster the people</Text>
-                            </View>
-                        </View>
-                        <View style={styles.songItem}>
-                            {SeptemberImage()}
-                            <View style={styles.TextSongContainer} >
-                            <Text style={styles.songTitle}>September</Text>
-                            <Text style={styles.songTitleDecription}>Earth wind & fire</Text>
-                            </View>
-                        </View>
-                        <View style={styles.songItem}>
-                            {GetLuckyImage()}
-                            <View style={styles.TextSongContainer} >
-                            <Text style={styles.songTitle}>Get Lucky</Text>
-                            <Text style={styles.songTitleDecription}>Daft Punk</Text>
-                            </View>
-                        </View>
-                
-                </View>
-            </ScrollView>
         </View>
     );
 };
@@ -119,7 +147,7 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection: 'column',
         backgroundColor:'#ffffff'
-        
+
     },
     containerHeading: {
         flexDirection: 'column',
@@ -128,13 +156,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffc76e',
         borderBottomRightRadius:ratioW(40),
         borderBottomLeftRadius:ratioW(40)
-        
+
     },
     HeadingTaskBar: {
         flexDirection:'row',
         paddingBottom: ratioW(32),
         height: ratioW(32),
-        
+
     },
     HeadingButtonBack:{
         paddingLeft:ratioW(18)
@@ -155,38 +183,37 @@ const styles = StyleSheet.create({
         height: ratioH(52),
         flexDirection:'column',
         paddingHorizontal:ratioW(38),
-        
+
     },
-  
+
     TextTitle:{
         height:ratioW(34),
         fontSize:ratioW(24),
         fontFamily:'Poppins-SemiBold',
-        color:'#191D21',   
-    },  
+        color:'#191D21',
+    },
     TextSongContainer:{
-        
+
          paddingBottom:ratioW(12),
     },
     TextTitleDescription:{
         fontSize:ratioW(14),
         fontFamily:'Poppins-Medium',
         color:'#656F77',
-        
+
     },
     ContainerSong: {
         flex: 1,
         flexDirection: 'column',
         top: ratioW(42),
-  
+
     },
-    scrollViewContainer: {
-        flex:1
-       
+    flatListContentContainer: {
+    paddingBottom : 36
     },
     contentContainerSing:{
          paddingBottom:36,
-         
+
     },
     songItem: {
 
@@ -194,14 +221,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingHorizontal:ratioW(28),
         alignItems:'center'
-        
+
     },
     songTitle: {
-        
+
         fontFamily:'Poppins-SemiBold',
         fontSize:ratioW(16),
         color:'#191D21'
-       
+
     },
     songTitleDecription:{
         fontFamily:'Poppins-Regular',

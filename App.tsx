@@ -19,17 +19,12 @@ const App = () => {
             <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
             <Stack.Screen name="SongToSing" component={SongToSing} />
-            
+            <Stack.Screen name="PartySong" component={PartySong} />
+            <Stack.Screen name="ChillHits" component={ChillHits} />
             <Stack.Screen name="SongViewScreen" component={SongViewScreen} />
         </Stack.Navigator>
     </NavigationContainer>
-    
-   //<HomeScreen/>
-   //<OnboardingScreen/>
-     //<SongToSing/>
-     //<PartySong/>
-     //<ChillHits/>
-     //<SongViewScreen/>
+
   );
 };
 
