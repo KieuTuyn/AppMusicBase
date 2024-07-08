@@ -1,11 +1,11 @@
 import * as React from "react";
 import {Text, View, TextInput, ScrollView, TouchableOpacity, FlatList, StyleSheet} from "react-native";
-import HeaderContent from "./Element/HeaderContent.tsx"
+import HeaderCatalog from "./Element/HeaderCatalog.tsx"
 import {ratioH} from "../../../utils/RatioScale.tsx";
-import BannerContent from "./Element/BannerContent.tsx";
-import ListSongContents from "./Element/ListSongContents.tsx";
+import BannerCatalog from "./Element/BannerCatalog.tsx";
+import ListSongCatalog from "./Element/ListSongCatalog.tsx";
 
-const ListContentScreen = () =>{
+const MusicCatalogScreen = () =>{
 
     return(
         <View style={styles.Container}>
@@ -17,10 +17,10 @@ const ListContentScreen = () =>{
                 bottom:ratioH(24),
                 top:0,
             }}>
-                < HeaderContent/>
-                < BannerContent/>
+                < HeaderCatalog/>
+                < BannerCatalog/>
             </View>
-            < ListSongContents/>
+            < ListSongCatalog/>
 
         </View>
     )
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
 
     },
 })
- export default ListContentScreen;
+ export default MusicCatalogScreen;

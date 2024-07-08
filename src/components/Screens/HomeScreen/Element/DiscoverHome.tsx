@@ -4,10 +4,11 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { ratioH, ratioW } from "../../../../utils/RatioScale.tsx";
 import { useNavigation } from '@react-navigation/native';
-import { dataViewPopular , dataViewTopAlbum } from "../../../../data/DiscoverData.tsx";
+import { connect } from 'react-redux';
 
 
-const DiscoverHome = ()=>{
+const DiscoverHome = ({ popular,topalbum,favourites})=>{
+
 
 const navigation = useNavigation();
 
@@ -45,9 +46,9 @@ const renderItem = ({ item }) => (
                      </View>
                      <View style={styles.popularListCard}>
                          <FlatList
-                             data={dataViewPopular}
+                             data={popular}
                              renderItem={renderItem}
-                             keyExtractor={(item) => item.title}
+                             keyExtractor={(item) => item.id}
                              horizontal={true}
                              showsHorizontalScrollIndicator={false}
                              contentContainerStyle={styles.flatListContentContainer}
@@ -63,7 +64,7 @@ const renderItem = ({ item }) => (
                      </View>
 
                      <FlatList
-                         data={dataViewTopAlbum}
+                         data={topalbum}
                          renderItem={renderItem}
                          keyExtractor={(item) => item.title}
                          horizontal={true}
@@ -72,12 +73,36 @@ const renderItem = ({ item }) => (
                      />
 
                  </View>
+
+                 <View style={styles.favouriteContainer}>
+
+                     <View style={styles.TitleFavorite}>
+                         <Text style={[styles.sectionTitle,{flex:1}]}>My Favourite</Text>
+                     </View>
+
+                     <FlatList
+                         data={favourites}
+                         renderItem={renderItem}
+                         keyExtractor={(item) => item.title}
+                         horizontal={true}
+                         showsHorizontalScrollIndicator={false}
+                         contentContainerStyle={styles.flatListContentContainer}
+                     />
+
+                 </View>
+
              </ScrollView>
 
          </View>
 
      )
  }
+
+const mapStateToProps = (state) => ({
+    popular: state.music.popular,
+    topalbum: state.music.topalbum,
+    favourites: state.music.favourites,
+});
 
 export const styles = StyleSheet.create({
     Container:{
@@ -107,7 +132,8 @@ export const styles = StyleSheet.create({
 
     },
     flatListContentContainer:{
-        paddingHorizontal:24
+        paddingHorizontal:24,
+
     },
     ContainerScrollvertical:{
         flex:1
@@ -121,16 +147,15 @@ export const styles = StyleSheet.create({
         height: ratioH(280),
         width: 'auto',
         gap: ratioH(16),
-        borderRadius:16,
-        // shadowColor: "#000",
+        // shadowColor: 'white',
         // shadowOffset: {
-        //   width: 0,
-        //   height: 1,
+        //     width: 0,
+        //     height: 1,
         // },
-        // shadowOpacity: 0.18,
-        // shadowRadius: 1.00,
-        // elevation: 1,
-        // opacity: 1
+        // shadowOpacity: 0.3,
+        // shadowRadius: 2.5,
+        // elevation: 3,
+        borderRadius:16,
 
     },
     cardImage: {
@@ -159,15 +184,32 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         gap: 16,
     },
+    FavoriteContainer: {
+        top:ratioH(32),
+        height: ratioH(377),
+        alignItems: "center",
+        gap: 16,
+    },
     AlbumTitle:{
         paddingHorizontal: 24,
         flexDirection: 'row',
         gap: 16,
     },
+    TitleFavorite:{
+        paddingHorizontal: 24,
+        flexDirection: 'row',
+        gap: 16,
+},
     sectionTitle: {
         fontFamily: "Poppins-SemiBold",
         fontSize: ratioH(24),
         color: "#000",
     },
+    favouriteContainer: {
+        top:ratioH(24),
+        height: ratioH(377),
+        alignItems: "center",
+        gap: 16,
+    },
 })
-export default DiscoverHome;
+export default connect(mapStateToProps)(DiscoverHome) ;

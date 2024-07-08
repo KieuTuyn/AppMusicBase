@@ -1,24 +1,23 @@
 import * as React from "react";
-import {Text, View, TextInput, ScrollView, TouchableOpacity, FlatList, StyleSheet} from "react-native";
+import {Text, View,StyleSheet} from "react-native";
 import {ratioH, ratioW} from "../../../../utils/RatioScale.tsx";
-import {HeadingImage} from"../../../../constants//RenderImages/ImageListContentRender.tsx"
-import {useEffect, useState} from "react";
-const BannerContent = () =>{
+import {BannerImage} from "../../../../constants/RenderImages/Favourite.tsx";
+const BannerFavourite = () =>{
 
     return(
         <View style={styles.Container}>
 
             <View style={styles.bannerImage}>
-                {HeadingImage()}
+                {BannerImage()}
             </View>
 
             <View style={styles.bannerTitle}>
                 <Text
                     style={styles.Title}
-                >Songs to sing out loud</Text>
+                >My Favourite List</Text>
                 <Text
                     style={styles.textTitle}
-                >30 songs to sing in the shower</Text>
+                >Songs to sing in the shower</Text>
             </View>
         </View>
     )
@@ -54,4 +53,4 @@ const styles = StyleSheet.create({
         color:'#656F77',
     }
 })
-export default BannerContent;
+export default BannerFavourite;

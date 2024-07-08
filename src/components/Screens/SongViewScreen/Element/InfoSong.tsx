@@ -35,31 +35,31 @@ export const  InfoSong = () => {
     return (
         <View style={styles.container}>
 
-                <View style={styles.InfoImage}>
-                    <View style={{  alignItems: 'center', justifyContent: 'center' }}>
-                        <Animated.View style={[animatedStyle2, {position: 'absolute'}]}>
-                            <View style={{
-                                width:ratioW(231),
-                                height:ratioH(231),
-                                top:ratioH(82)
-                            }}>
+            <View style={styles.InfoImage}>
+                <View style={{  alignItems: 'center', justifyContent: 'center' }}>
+                    <Animated.View style={[animatedStyle2, {position: 'absolute'}]}>
+                        <View style={{
+                            width:ratioW(231),
+                            height:ratioH(231),
+                            top:ratioH(82)
+                        }}>
 
-                                <SliderIcon  />
-                            </View>
+                            <SliderIcon  />
+                        </View>
 
-                        </Animated.View>
+                    </Animated.View>
 
-                        <MusicProgrressBarAll width={ratioW(231)} height={ratioH(231)} />
-                        <Animated.View style={[animatedStyle1, {position: 'absolute'}]}>
-                            <Image
-                                source={require("../../../../assets/images/Highway.png")}
-                                style={styles.ImageStyle}
-                                resizeMode={'contain'}
-                            />
-                        </Animated.View>
+                    <MusicProgrressBarAll width={ratioW(231)} height={ratioH(231)} />
+                    <Animated.View style={[animatedStyle1, {position: 'absolute'}]}>
+                        <Image
+                            source={require("../../../../assets/images/Highway.png")}
+                            style={styles.ImageStyle}
+                            resizeMode={'contain'}
+                        />
+                    </Animated.View>
 
-                    </View>
                 </View>
+            </View>
 
 
             <View style={styles.Text}>

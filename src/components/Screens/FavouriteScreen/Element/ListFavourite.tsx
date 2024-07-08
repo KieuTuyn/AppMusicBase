@@ -3,7 +3,9 @@ import {Text, View, TextInput, ScrollView, TouchableOpacity, FlatList, StyleShee
 import {ratioH, ratioW} from "../../../../utils/RatioScale.tsx";
 import {dataViewListMusic} from "../../../../data/DataListContents.tsx";
 import {useNavigation} from "@react-navigation/native";
-const ListSongContents = () =>{
+import {useState} from "react";
+import { connect } from 'react-redux';
+const ListFavourite = ({listFavourites}) =>{
 
     const navigation = useNavigation();
 
@@ -26,9 +28,9 @@ const ListSongContents = () =>{
         <View style={styles.Container}>
 
             <FlatList
-                data={dataViewListMusic}
+                data={listFavourites}
                 renderItem={renderItem}
-                keyExtractor={(item) => item.title}
+                keyExtractor={(item) => item.id}
                 vertical={true}
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.flatListContentContainer} // Add spacing if needed
@@ -37,6 +39,9 @@ const ListSongContents = () =>{
         </View>
     )
 }
+const mapStateToProps = (state) => ({
+    listFavourites: state.music.listFavourites
+});
 const styles = StyleSheet.create({
     Container: {
         flexDirection: 'column',
@@ -75,4 +80,4 @@ const styles = StyleSheet.create({
     }
 
 })
-export default ListSongContents;
+export default connect(mapStateToProps) (ListFavourite);

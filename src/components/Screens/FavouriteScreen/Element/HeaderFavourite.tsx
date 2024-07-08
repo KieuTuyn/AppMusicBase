@@ -7,24 +7,24 @@ import {useNavigation} from "@react-navigation/native";
 import {ratioH, ratioW} from "../../../../utils/RatioScale.tsx";
 import {useEffect} from "react";
 
-const HeaderContent = () =>{
+const HeaderFavourite = () =>{
     const navigation = useNavigation();
     return(
 
-            <View style={styles.Container}>
+        <View style={styles.Container}>
 
-                    <TouchableOpacity
-                        onPress={() => navigation.goBack()}
-                        hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}>
-                        <Back />
-                    </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}>
+                <Back />
+            </TouchableOpacity>
 
-                <View style={styles.headingAction}>
-                    <ScaleTim />
-                    <Download/>
-                </View>
-
+            <View style={styles.headingAction}>
+                <ScaleTim />
+                <Download/>
             </View>
+
+        </View>
 
     )
 }
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
         paddingRight: ratioW(18)
     },
 })
-export default HeaderContent;
+export default HeaderFavourite;
