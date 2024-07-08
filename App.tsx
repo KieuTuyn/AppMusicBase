@@ -16,9 +16,9 @@ const App = () => {
     <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-            {/*<Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />*/}
-            {/*<Stack.Screen name="HomeScreen" component={HomeScreen} />*/}
-            {/*<Stack.Screen name="ListContentScreen" component={ListContentScreen} />*/}
+            <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="ListContentScreen" component={ListContentScreen} />
             {/*<Stack.Screen name="PartySong" component={PartySong} />*/}
             {/*<Stack.Screen name="ChillHits" component={ChillHits} />*/}
             <Stack.Screen name="SongViewScreen" component={SongViewScreen} />

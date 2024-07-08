@@ -5,21 +5,21 @@ export const dataViewPopular = [
         title: 'Song to sing out loud',
         detailText: '30 songs for an acoustic',
         Background: () => Acoustic(),
-        screen:'SongToSing',
+        screen:'ListContentScreen',
 
     },
     {
         title: 'Party song',
         detailText: '30 songs for an acoustic',
         Background: () => ClassicHit(),
-        screen:'PartySong',
+        screen:'ListContentScreen',
 
     },
     {
         title: 'Chill hits',
         detailText: '10 songs for an top',
         Background: () => Top10(),
-        screen:'ChillHits',
+        screen:'ListContentScreen',
 
     },
 ]
@@ -29,21 +29,21 @@ export const dataViewTopAlbum = [
         title: 'Acoustic Guitar 1',
         detailText: '30 songs for an acoustic',
         Background: () => Top1(),
-        screen:'SongToSing',
+        screen:'ListContentScreen',
 
     },
     {
         title: 'Acoustic Guitar 2',
         detailText: '30 songs for an acoustic',
         Background: () => Top2(),
-        screen:'SongToSing',
+        screen:'ListContentScreen',
 
     },
     {
         title: 'Acoustic Guitar 3',
         detailText: '10 songs for an top',
         Background: () => Top10(),
-        screen:'SongToSing',
+        screen:'ListContentScreen',
 
     },
 ]
