@@ -8,7 +8,10 @@ import {PlayerSong} from "./Element/PlayerSong.tsx";
 import {TrackRoot} from "./root/TrackRoot.tsx";
 const SongViewScreen = () => {
   return (
-      <View style={{ flex:1 ,top: 36 }}>
+      <View style={{ flex:1 ,
+
+
+      }}>
         <TrackRoot/>
 
       </View>

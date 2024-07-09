@@ -38,7 +38,7 @@ export const ControllerSong = () => {
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        bottom: 24,
+        bottom: 0,
         left: 0,
        width:'100%',
         backgroundColor: '#f5f5f5',

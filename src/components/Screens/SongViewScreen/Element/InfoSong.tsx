@@ -74,9 +74,9 @@ export const  InfoSong = () => {
 export const styles = StyleSheet.create({
     container:{
         height: ratioH(382),
-        top:ratioH(16),
         backgroundColor: '#fff',
         alignItems: 'center',
+        justifyContent: 'center',
 
     },
     InfoImage:{

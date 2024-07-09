@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         top: ratioH(48),
         height: ratioH(150),
+
     },
     PlayStop: {
         flexDirection: 'row',

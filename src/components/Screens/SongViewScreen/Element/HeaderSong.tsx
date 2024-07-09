@@ -9,30 +9,34 @@ import { ratioH, ratioW } from "../../../../utils/RatioScale.tsx";
 export const HeaderSong =()=>{
     const navigation = useNavigation();
     return(
-        <View style={styles.container}>
-
-            <TouchableOpacity
-                style={styles.HeadingButtonBack}
-                onPress={() => navigation.goBack()}>
-                <Back />
-            </TouchableOpacity>
-            <View style={styles.HeadingAction}>
-                <Download />
+        <View style={styles.Container}>
+            <View style={styles.Header}>
+                <TouchableOpacity
+                    style={styles.HeadingButtonBack}
+                    onPress={() => navigation.goBack()}>
+                    <Back />
+                </TouchableOpacity>
+                <View style={styles.HeadingAction}>
+                    <Download />
+                </View>
             </View>
+
 
         </View>
 
     )
 }
 const styles = StyleSheet.create({
-    container:{
+    Container:{
+        height: ratioH(90),
+        paddingTop: 36 ,
+        paddingHorizontal: ratioW(16),
+       backgroundColor:'#a6b9ff'
+    },
+    Header: {
         height: ratioH(40),
         flexDirection: 'row',
-        paddingHorizontal: ratioW(16),
-
-    },
-    HeadingButtonBack: {
-
+        //paddingHorizontal: ratioW(16),
     },
     HeadingAction: {
         flexDirection: 'row',

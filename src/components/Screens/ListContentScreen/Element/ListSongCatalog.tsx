@@ -5,6 +5,7 @@ import {useNavigation} from "@react-navigation/native";
 import { connect } from 'react-redux';
 import { addToFavourites } from '../../../../redux/action.tsx'
 import Modal from 'react-native-modal';
+import Info from '../../../../assets/IconSvgs/Info.svg'
 import {useState} from "react";
 // import {DataMusic} from "../../../../data/DataMusic.tsx";
 const ListSongCatalog = ({ listMusic ,addToFavourites}) =>{
@@ -37,17 +38,17 @@ const ListSongCatalog = ({ listMusic ,addToFavourites}) =>{
                 </TouchableOpacity>
             </View>
             <View style={{
+                top:30,
                 justifyContent: 'center' ,
                 position:'relative',
                 borderRadius:20,
-
                 width:ratioW(32),
                 height:ratioH(32),
 
             }}>
                 <TouchableOpacity
                     onPress={() => toggleModal(item)}>
-                    <Text >Add</Text>
+                    <Info/>
                 </TouchableOpacity>
             </View>
         </View>
@@ -66,17 +67,28 @@ const ListSongCatalog = ({ listMusic ,addToFavourites}) =>{
                 contentContainerStyle={styles.flatListContentContainer}
 
             />
+            <Modal isVisible={isModalVisible}
+                   animationType="slide"
+                   transparent={true}
 
-            <Modal isVisible={isModalVisible}>
-                <View style={{ backgroundColor: 'white' }}>
-                    <Button
-                        title="Add to Favourite"
-                        onPress={() => {
-                            addToFavourites(selectedSong);
-                            setModalVisible(false);
-                        }}
-                    />
-                    <Button title="Close" onPress={() => setModalVisible(false)} />
+            >
+                <View style={styles.Modal}>
+                    <View >
+                        <Button
+                            title="Add to Favourite"
+                            color="black"
+                            onPress={() => {
+                                addToFavourites(selectedSong);
+                                setModalVisible(false);
+                            }}
+                        />
+                    </View>
+
+                    <View>
+                        <Button color="black"
+                                title="Close" onPress={() => setModalVisible(false)} />
+                    </View>
+
                 </View>
             </Modal>
 
@@ -124,6 +136,26 @@ const styles = StyleSheet.create({
         fontFamily:'Poppins-Regular',
         fontSize:ratioW(14),
         color:'#ACB8C2'
+    },
+    Modal:{
+        left:60,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
+        justifyContent:"center",
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+        height:120,
+        width:250,
+        gap:20,
+
     }
 
 })
