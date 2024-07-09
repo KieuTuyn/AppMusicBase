@@ -1,9 +1,7 @@
 import * as React from "react";
-import {Text, View, TextInput, ScrollView, TouchableOpacity, FlatList, StyleSheet} from "react-native";
+import {Text, View, TouchableOpacity, FlatList, StyleSheet} from "react-native";
 import {ratioH, ratioW} from "../../../../utils/RatioScale.tsx";
-import {dataViewListMusic} from "../../../../data/DataListContents.tsx";
 import {useNavigation} from "@react-navigation/native";
-import {useState} from "react";
 import { connect } from 'react-redux';
 const ListFavourite = ({listFavourites}) =>{
 
@@ -33,7 +31,7 @@ const ListFavourite = ({listFavourites}) =>{
                 keyExtractor={(item) => item.id}
                 vertical={true}
                 showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.flatListContentContainer} // Add spacing if needed
+                contentContainerStyle={styles.flatListContentContainer}
             />
 
         </View>

@@ -1,19 +1,14 @@
-// TrackController.tsx
-
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { RepeatMode } from 'react-native-track-player';
-import React, { useContext } from "react";
+import React from "react";
 import Tim from "../../../../assets/IconSvgs/Tim.svg";
 import List from "../../../../assets/IconSvgs/List.svg";
 import NoRepeat from "../../../../assets/IconSvgs/NoRepeat.svg";
 import RepeatOne from "../../../../assets/IconSvgs/RepeatOne.svg";
 import RepeatAll from "../../../../assets/IconSvgs/RepeatAll.svg";
-import TrackContext  from "../../../../components/Screens/SongViewScreen/root/TrackContext.tsx";
 import { ratioH, ratioW } from "../../../../utils/RatioScale.tsx";
+import { RepeatMode } from "react-native-track-player";
 
-export const ControllerSong = () => {
-    const { repeatMode, handleRepeatMode } = useContext(TrackContext);
-
+const ControllerSong = ({ repeatMode, handleRepeatMode }) => {
     return (
         <View style={styles.container}>
             <View style={styles.ContainerButtonSongPlay}>
@@ -24,11 +19,14 @@ export const ControllerSong = () => {
                     <View style={styles.ButtonAction}>
                         <List />
                     </View>
-                    <TouchableOpacity onPress={handleRepeatMode}>
-                        {repeatMode === RepeatMode.Off && <NoRepeat />}
-                        {repeatMode === RepeatMode.Track && <RepeatOne />}
-                        {repeatMode === RepeatMode.Queue && <RepeatAll />}
-                    </TouchableOpacity>
+                    <View>
+                        <TouchableOpacity onPress={handleRepeatMode}>
+                            {repeatMode === RepeatMode.Off && <NoRepeat />}
+                            {repeatMode === RepeatMode.Track && <RepeatOne />}
+                            {repeatMode === RepeatMode.Queue && <RepeatAll />}
+                        </TouchableOpacity>
+                    </View>
+
                 </View>
             </View>
         </View>
@@ -40,7 +38,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         left: 0,
-       width:'100%',
+        width: '100%',
         backgroundColor: '#f5f5f5',
         height: ratioH(96),
     },
@@ -71,3 +69,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
+
+export default ControllerSong;

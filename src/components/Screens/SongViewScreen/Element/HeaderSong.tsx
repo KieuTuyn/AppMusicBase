@@ -12,7 +12,6 @@ export const HeaderSong =()=>{
         <View style={styles.Container}>
             <View style={styles.Header}>
                 <TouchableOpacity
-                    style={styles.HeadingButtonBack}
                     onPress={() => navigation.goBack()}>
                     <Back />
                 </TouchableOpacity>

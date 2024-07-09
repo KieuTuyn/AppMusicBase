@@ -11,14 +11,12 @@ import Animated, {
 import { ratioH, ratioW } from "../../../../utils/RatioScale.tsx";
 import MusicProgrressBarAll from "../../../../assets/IconSvgs/MusicProgrressBarAll.svg";
 import SliderIcon from "../../../../assets/IconSvgs/Slider.svg";
-import TrackContext from "../root/TrackContext.tsx";
+
 
 const duration = 10000;
 const easing = Easing.linear;
 export const  InfoSong = () => {
-    const {
-        isPlaying
-    } = useContext(TrackContext);
+
 
     const sv = useSharedValue(0);
     React.useEffect(() => {

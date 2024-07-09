@@ -5,7 +5,6 @@ import ScaleTim from "../../../../constants/Animation/ScaleTim.tsx";
 import Download from "../../../../assets/IconSvgs/Download.svg";
 import {useNavigation} from "@react-navigation/native";
 import {ratioH, ratioW} from "../../../../utils/RatioScale.tsx";
-import {useEffect} from "react";
 
 const HeaderFavourite = () =>{
     const navigation = useNavigation();

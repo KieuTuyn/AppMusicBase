@@ -1,28 +1,34 @@
 import TrackPlayer, { Event, RepeatMode, State, useProgress, useTrackPlayerEvents } from "react-native-track-player";
 import React, { useEffect, useState } from "react";
-import {DataMusic} from "../../../../data/DataMusic.tsx";
-import  TrackContext  from "./TrackContext.tsx";
-import {PlayerSong} from "../Element/PlayerSong.tsx";
-import {HeaderSong} from "../Element/HeaderSong.tsx";
-import {InfoSong} from "../Element/InfoSong.tsx";
-import {ControllerSong} from "../Element/ControllerSong.tsx";
+import {connect, useDispatch, useSelector} from 'react-redux';
+import { playPause, seekTo, setMusicData, setRepeatMode, skipToNext, skipToPrevious } from '../../../../redux/action'
+import PlayerSong from "../Element/PlayerSong";
+import { HeaderSong } from "../Element/HeaderSong";
+import { InfoSong } from "../Element/InfoSong";
+import ControllerSong from "../Element/ControllerSong";
+import {getIsPlaying, getSliderValue} from "../../../../redux/selectors.tsx";
 
-export const TrackRoot = () => {
-
+const TrackRoot = ({ dataMusic, setMusicData,repeatMode}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [repeatMode, setRepeatMode] = useState(RepeatMode.Off);
-  const {position, duration } = useProgress();
-  const [sliderValue, setSliderValue] = useState(0);
+  const { position, duration } = useProgress();
+  const dispatch = useDispatch();
+  const events = [Event.PlaybackState, Event.PlaybackTrackChanged];
 
-  const events = [
-    Event.PlaybackState,
-  ];
-  useTrackPlayerEvents(events, (event) => {
+  useTrackPlayerEvents(events, async (event) => {
     if (event.type === Event.PlaybackState) {
-      setIsPlaying(event.state === State.Playing);
-
+      dispatch(playPause());
+    }
+    if (event.type === Event.PlaybackTrackChanged) {
+      const trackIndex = await TrackPlayer.getCurrentTrack();
+      if (trackIndex === dataMusic.length - 1) {
+        if (repeatMode === RepeatMode.Track) {
+          await TrackPlayer.seekTo(0);
+          await TrackPlayer.play();
+        } else if (repeatMode === RepeatMode.Queue) {
+          await TrackPlayer.skip(0);
+        }
+      }
     }
   });
 
@@ -31,7 +37,7 @@ export const TrackRoot = () => {
       setIsLoading(true);
       try {
         await TrackPlayer.setupPlayer();
-        await TrackPlayer.add(DataMusic);
+        await TrackPlayer.add(dataMusic);
 
       } catch (err) {
         setLoadError(err);
@@ -40,39 +46,25 @@ export const TrackRoot = () => {
         setIsLoading(false);
       }
     };
-    setupPlayer();
 
-    const trackChangedListener = TrackPlayer.addEventListener(Event.PlaybackTrackChanged, async (data) => {
-      const trackIndex = await TrackPlayer.getCurrentTrack();
-      if (trackIndex === DataMusic.length - 1) {
-        if (repeatMode === RepeatMode.Track) {
-          await TrackPlayer.seekTo(0);
-          await TrackPlayer.play();
-        } else if (repeatMode === RepeatMode.Queue) {
-          await TrackPlayer.skip(0);
-        }
-      }
-    });
+    setupPlayer();
 
     return () => {
       TrackPlayer.stop();
-      trackChangedListener.remove();
     };
-  }, []);
+  }, [dataMusic]);
 
-  // Cập nhật sliderValue khi position thay đổi
   useEffect(() => {
-    setSliderValue(position);
+    dispatch(seekTo(position));
   }, [position]);
+
   const handleSliderValueChange = (value) => {
-    setSliderValue(value);
+    dispatch(seekTo(value));
     TrackPlayer.seekTo(value);
   };
 
   const handlePlayPause = async () => {
-
     const currentPlaybackState = await TrackPlayer.getState();
-
     if (currentPlaybackState === State.Playing || currentPlaybackState === State.Buffering) {
       await TrackPlayer.pause();
     } else if (currentPlaybackState === State.Paused || currentPlaybackState === State.Ready) {
@@ -83,26 +75,28 @@ export const TrackRoot = () => {
   };
 
   const handleSkipToPrevious = async () => {
+    dispatch(skipToPrevious());
     await TrackPlayer.skipToPrevious();
-
   };
 
   const handleSkipToNext = async () => {
+    dispatch(skipToNext());
     await TrackPlayer.skipToNext();
   };
 
   const handleRepeatMode = async () => {
-    // Cycle through RepeatMode enum values
+    let newRepeatMode;
     if (repeatMode === RepeatMode.Off) {
-      setRepeatMode(RepeatMode.Track);
+      newRepeatMode = RepeatMode.Track;
     } else if (repeatMode === RepeatMode.Track) {
-      setRepeatMode(RepeatMode.Queue);
+      newRepeatMode = RepeatMode.Queue;
     } else {
-      setRepeatMode(RepeatMode.Off);
+      newRepeatMode = RepeatMode.Off;
     }
 
-    await TrackPlayer.setRepeatMode(repeatMode);
-    console.log("Repeat mode:", repeatMode);
+    dispatch(setRepeatMode(newRepeatMode));
+    await TrackPlayer.setRepeatMode(newRepeatMode);
+    console.log("Repeat mode:", newRepeatMode);
   };
 
   const formatTime = (seconds) => {
@@ -112,28 +106,41 @@ export const TrackRoot = () => {
   };
 
   return (
-      <TrackContext.Provider
-          value={{
-            isLoading,
-            loadError,
-            isPlaying,
-            repeatMode,
-            position,
-            duration,
-            handlePlayPause,
-            handleSkipToPrevious,
-            handleSkipToNext,
-            handleRepeatMode,
-            sliderValue,
-            formatTime,
-            handleSliderValueChange
-          }}
-      >
-
+      <>
         <HeaderSong />
         <InfoSong />
-        <PlayerSong />
-        <ControllerSong />
-    </TrackContext.Provider>
+        <PlayerSong
+            isLoading={isLoading}
+            isPlaying={useSelector(getIsPlaying)}
+            position={position}
+            duration={duration}
+            sliderValue={useSelector(getSliderValue)}
+            handlePlayPause={handlePlayPause}
+            handleSkipToPrevious={handleSkipToPrevious}
+            handleSkipToNext={handleSkipToNext}
+            formatTime={formatTime}
+            handleSliderValueChange={handleSliderValueChange}
+        />
+        <ControllerSong
+            repeatMode={repeatMode}
+            handleRepeatMode={handleRepeatMode}
+        />
+      </>
   );
 };
+
+const mapStateToProps = (state) => ({
+  dataMusic: state.music.dataMusic,
+  repeatMode: state.music.repeatMode,
+});
+
+const mapDispatchToProps = {
+  setMusicData,
+  playPause,
+  skipToPrevious,
+  skipToNext,
+  seekTo,
+  setRepeatMode,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrackRoot);

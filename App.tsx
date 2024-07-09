@@ -20,7 +20,7 @@ const App = () => {
     <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-            {/*<Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />*/}
+            <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
             <Stack.Screen name="MusicCatalogScreen" component={MusicCatalogScreen} />
             <Stack.Screen name="FavouriteScreen" component={FavouriteScreen} />
