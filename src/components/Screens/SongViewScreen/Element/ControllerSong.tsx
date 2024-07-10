@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import Tim from "../../../../assets/IconSvgs/Tim.svg";
+import Tim from "../../../../assets/IconSvgs/HeartLike.svg";
 import List from "../../../../assets/IconSvgs/List.svg";
 import NoRepeat from "../../../../assets/IconSvgs/NoRepeat.svg";
 import RepeatOne from "../../../../assets/IconSvgs/RepeatOne.svg";

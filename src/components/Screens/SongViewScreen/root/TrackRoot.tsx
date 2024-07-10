@@ -15,6 +15,28 @@ const TrackRoot = ({ dataMusic, setMusicData,repeatMode}) => {
   const dispatch = useDispatch();
   const events = [Event.PlaybackState, Event.PlaybackTrackChanged];
 
+  useEffect(() => {
+    const setupPlayer = async () => {
+      setIsLoading(true);
+      try {
+        await TrackPlayer.setupPlayer();
+        await TrackPlayer.add(dataMusic);
+
+      } catch (err) {
+        setLoadError(loadError);
+        console.log(loadError);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    setupPlayer();
+
+    return () => {
+      TrackPlayer.stop();
+    };
+  }, [dataMusic]);
+
   useTrackPlayerEvents(events, async (event) => {
     if (event.type === Event.PlaybackState) {
       dispatch(playPause());
@@ -31,28 +53,6 @@ const TrackRoot = ({ dataMusic, setMusicData,repeatMode}) => {
       }
     }
   });
-
-  useEffect(() => {
-    const setupPlayer = async () => {
-      setIsLoading(true);
-      try {
-        await TrackPlayer.setupPlayer();
-        await TrackPlayer.add(dataMusic);
-
-      } catch (err) {
-        setLoadError(err);
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    setupPlayer();
-
-    return () => {
-      TrackPlayer.stop();
-    };
-  }, [dataMusic]);
 
   useEffect(() => {
     dispatch(seekTo(position));

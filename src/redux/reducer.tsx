@@ -15,7 +15,7 @@ const initialMusicState = {
     position: 0,
     duration: 0,
     sliderValue: 0,
-    repeatMode:RepeatMode.Track,
+    repeatMode:RepeatMode.Off,
 
     };
 

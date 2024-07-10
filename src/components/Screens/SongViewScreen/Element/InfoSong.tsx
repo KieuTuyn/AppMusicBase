@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React from 'react';
 import { View, TouchableOpacity, Image, Text, StyleSheet } from "react-native";
 import Animated, {
     useSharedValue,
